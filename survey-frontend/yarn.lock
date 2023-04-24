@@ -474,6 +474,18 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@headlessui/react@npm:^1.7.14":
+  version: 1.7.14
+  resolution: "@headlessui/react@npm:1.7.14"
+  dependencies:
+    client-only: ^0.0.1
+  peerDependencies:
+    react: ^16 || ^17 || ^18
+    react-dom: ^16 || ^17 || ^18
+  checksum: 9122114d7a618877a8da2ada000422ce82e6af47195e414076fa5cf45687709479eb30b0df414eed52079be6e5904151bc92e4acfafbdde2592c608f015c490e
+  languageName: node
+  linkType: hard
+
 "@humanwhocodes/config-array@npm:^0.11.8":
   version: 0.11.8
   resolution: "@humanwhocodes/config-array@npm:0.11.8"
@@ -1045,6 +1057,13 @@ __metadata:
   version: 2.2.0
   resolution: "clean-stack@npm:2.2.0"
   checksum: 2ac8cd2b2f5ec986a3c743935ec85b07bc174d5421a5efc8017e1f146a1cf5f781ae962618f416352103b32c9cd7e203276e8c28241bbe946160cab16149fb68
+  languageName: node
+  linkType: hard
+
+"client-only@npm:^0.0.1":
+  version: 0.0.1
+  resolution: "client-only@npm:0.0.1"
+  checksum: 0c16bf660dadb90610553c1d8946a7fdfb81d624adea073b8440b7d795d5b5b08beb3c950c6a2cf16279365a3265158a236876d92bce16423c485c322d7dfaf8
   languageName: node
   linkType: hard
 
@@ -3513,6 +3532,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "survey-frontend@workspace:."
   dependencies:
+    "@headlessui/react": ^1.7.14
     "@tailwindcss/forms": ^0.5.3
     "@types/react": ^18.0.28
     "@types/react-dom": ^18.0.11

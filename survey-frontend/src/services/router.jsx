@@ -2,27 +2,41 @@ import {createBrowserRouter} from 'react-router-dom'
 
 // import pages
 import Login from "../views/Login.jsx";
-import Dashboard from "../views/Dashboard.jsx";
 import Surveys from "../views/Surveys.jsx";
 import Signup from "../views/Signup.jsx";
+import GuestLayout from "../Layouts/GuestLayout.jsx";
+import DefaultLayout from "../Layouts/DefaultLayout.jsx";
+import Dashboard from "../views/Dashboard.jsx";
 
 const router = createBrowserRouter([
   {
     path: '/',
-    element: <Dashboard/>
+    element: <DefaultLayout/>,
+    children: [
+      {
+        path: '/',
+        element: <Dashboard/>
+      },
+      {
+        path: '/surveys',
+        element: <Surveys/>
+      }
+    ]
   },
   {
-    path: '/login',
-    element: <Login/>
+    path: '/',
+    element: <GuestLayout/>,
+    children: [
+      {
+        path: 'login',
+        element: <Login/>
+      },
+      {
+        path: 'signup',
+        element: <Signup/>
+      },
+    ]
   },
-  {
-    path: '/signup',
-    element: <Signup/>
-  },
-  {
-    path: '/surveys',
-    element: <Surveys/>
-  }
 ]);
 
 export default router;
