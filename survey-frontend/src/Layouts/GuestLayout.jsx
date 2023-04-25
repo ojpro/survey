@@ -1,6 +1,14 @@
-import {Outlet} from "react-router-dom";
+import {Navigate, Outlet} from "react-router-dom";
+import {userStateContext} from "../contexts/ContextProvider.jsx";
 
 export default function GuestLayout() {
+
+  const {userToken} = userStateContext();
+
+  if (userToken) {
+    return <Navigate to='/'/>
+  }
+
   return (
     <>
       <div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8">
@@ -11,7 +19,6 @@ export default function GuestLayout() {
             alt="Your Company"
           />
           <Outlet/>
-
         </div>
       </div>
     </>

@@ -1,7 +1,7 @@
 import {Fragment} from 'react'
 import {Disclosure, Menu, Transition} from '@headlessui/react'
 import {HiBars3BottomRight, HiXMark} from 'react-icons/hi2';
-import {NavLink, Outlet} from "react-router-dom";
+import {Navigate, NavLink, Outlet} from "react-router-dom";
 import {userStateContext} from "../contexts/ContextProvider.jsx";
 import {FaUser} from "react-icons/all.js";
 
@@ -24,7 +24,11 @@ export default function DefaultLayout() {
   }
 
   // get user state
-  const {currentUser} = userStateContext();
+  const {currentUser, userToken} = userStateContext();
+
+  if (!userToken) {
+    return <Navigate to='/login'/>
+  }
 
   return (
     <>
@@ -133,7 +137,7 @@ export default function DefaultLayout() {
                 <div className="border-t border-gray-700 pb-3 pt-4">
                   <div className="flex items-center px-5">
                     <div className="flex-shrink-0">
-                      <FaUser className="text-2xl text-white" />
+                      <FaUser className="text-2xl text-white"/>
                     </div>
                     <div className="ml-3">
                       <div className="text-base font-medium leading-none text-white">{currentUser.name}</div>
