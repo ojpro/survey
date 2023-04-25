@@ -1,7 +1,11 @@
+import DashboardPage from "../components/DashboardPage.jsx";
+
 export default function Surveys(){
   return (
    <>
-    <h1 className="text-center">Surveys</h1>
+     <DashboardPage title='Surveys'>
+      List of surveys
+     </DashboardPage>
    </>
   )
 }

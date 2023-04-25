@@ -1,7 +1,11 @@
+import DashboardPage from "../components/DashboardPage.jsx";
+
 export default function Dashboard() {
   return (
     <>
-      <h1 className="text-center">Dashboard</h1>
+      <DashboardPage title='Dashboard'>
+        Dashboard Content
+      </DashboardPage>
     </>
   )
 }
