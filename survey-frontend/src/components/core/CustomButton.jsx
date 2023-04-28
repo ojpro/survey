@@ -17,13 +17,12 @@ export default function CustomButton({
     'border-transparent',
     'focus:ring-2',
     'focus:ring-offset-1',
-    'flex flex-row gap-2 justify-around',
+    'flex flex-row gap-2 justify-around items-center',
   ]
 
   if (link) {
     styles = [
       ...styles,
-      'bg-transparent',
     ]
 
     // generate styles based on the color
@@ -53,7 +52,7 @@ export default function CustomButton({
   } else {
     styles = [
       ...styles,
-      'text-white',
+      'text-white'
     ]
   }
 
@@ -64,7 +63,7 @@ export default function CustomButton({
       'h-8',
       'items-center',
       'justify-center',
-      'rounded-full',
+      'rounded-full'
     ]
     // generate styles based on the color
     switch (color) {
@@ -92,7 +91,8 @@ export default function CustomButton({
       ...styles,
       'px-2.5',
       'py-1',
-      'rounded-md'
+      'rounded-md',
+      'text-white'
     ]
 
     // generate styles based on the color
