@@ -9,6 +9,7 @@ const Axios = axios.create({
 Axios.interceptors.request.use(config => {
   const token = "tempToken"; // TODO
   config.headers.Authorization = `Bearer ${token}`;
+  return config;
 })
 
 // Handle Unauthorized requests

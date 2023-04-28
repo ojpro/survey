@@ -1,7 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthController;
-use Illuminate\Routing\Route;
+use \Illuminate\Support\Facades\Route;
 
-Route::get('/signup', [AuthController::class, 'signup']);
-Route::get('/login', [AuthController::class, 'login']);
+Route::post('/signup', [AuthController::class, 'signup']);
+Route::post('/login', [AuthController::class, 'login']);
