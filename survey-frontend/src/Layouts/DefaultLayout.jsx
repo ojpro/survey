@@ -4,6 +4,7 @@ import {HiBars3BottomRight, HiXMark} from 'react-icons/hi2';
 import {Navigate, NavLink, Outlet} from "react-router-dom";
 import {userStateContext} from "../contexts/ContextProvider.jsx";
 import {FiUser} from "react-icons/fi";
+import Axios from "../services/axios.js";
 
 const navigation = [
   {name: 'Dashboard', to: '/'},
@@ -15,16 +16,20 @@ function classNames(...classes) {
 }
 
 export default function DefaultLayout() {
+  // get user state
+  const {currentUser, userToken, setUserToken, setCurrentUser} = userStateContext();
 
   // Logout functionality
   const logout = (event) => {
     event.preventDefault()
 
-    console.log('Logging out')
+    Axios.post('/logout')
+      .then(res => {
+        // clear user info
+        setCurrentUser({})
+        setUserToken(null)
+      })
   }
-
-  // get user state
-  const {currentUser, userToken} = userStateContext();
 
   if (!userToken) {
     return <Navigate to='/login'/>

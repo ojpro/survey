@@ -7,8 +7,7 @@ const Axios = axios.create({
 
 // set requests' header authorization token
 Axios.interceptors.request.use(config => {
-  const token = "tempToken"; // TODO
-  config.headers.Authorization = `Bearer ${token}`;
+  config.headers.Authorization = `Bearer ${localStorage.getItem('TOKEN')}`;
   return config;
 })
 
