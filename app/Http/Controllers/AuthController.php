@@ -54,8 +54,8 @@ class AuthController extends Controller
         if (!Auth::attempt($credentials, $remember)) {
             // return error response
             return response([
-                'error' => 'The provided email/password is wrong'
-            ]);
+                'errors' => ['error' => 'The provided email/password is wrong']
+            ], 422);
         }
 
         // get the user info
