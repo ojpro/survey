@@ -179,11 +179,8 @@ const tempSurveys = [
 
 export const ContextProvider = ({children}) => {
   // declare states
-  const [currentUser, setCurrentUser] = useState({
-    name: 'Tom Cook',
-    email: 'tom@example.com',
-  })
-  const [userToken, setUserToken] = useState(' ')
+  const [currentUser, setCurrentUser] = useState({})
+  const [userToken, setUserToken] = useState('')
   const [surveys, setSurveys] = useState(tempSurveys)
 
   return (
