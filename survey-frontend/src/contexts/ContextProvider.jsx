@@ -2,11 +2,14 @@ import {createContext, useContext, useState} from "react";
 
 const StateContext = createContext({
   currentUser: {},
-  setCurrentUser: () => {},
+  setCurrentUser: () => {
+  },
   userToken: null,
-  setUserToken: () => {},
+  setUserToken: () => {
+  },
   surveys: {},
-  setSurveys: () => {},
+  setSurveys: () => {
+  },
 })
 
 const tempSurveys = [
@@ -180,9 +183,17 @@ const tempSurveys = [
 export const ContextProvider = ({children}) => {
   // declare states
   const [currentUser, setCurrentUser] = useState({})
-  const [userToken, setUserToken] = useState('')
+  const [userToken, _setUserToken] = useState(localStorage.getItem('TOKEN') || '')
   const [surveys, setSurveys] = useState(tempSurveys)
 
+  const setUserToken = (token) => {
+    if (token) {
+      localStorage.setItem('TOKEN', token);
+    } else {
+      localStorage.remove('TOKEN', token);
+    }
+    _setUserToken(token)
+  }
   return (
     <StateContext.Provider value={{
       currentUser,
