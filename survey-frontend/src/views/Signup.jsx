@@ -30,7 +30,6 @@ export default function Signup() {
       if (error.response) {
         // store errors
         setErrors(error.response.data.errors)
-        console.log(errors)
       }
       console.error(error)
     })
