@@ -3,7 +3,7 @@ import {Disclosure, Menu, Transition} from '@headlessui/react'
 import {HiBars3BottomRight, HiXMark} from 'react-icons/hi2';
 import {Navigate, NavLink, Outlet} from "react-router-dom";
 import {userStateContext} from "../contexts/ContextProvider.jsx";
-import {FaUser} from "react-icons/all.js";
+import {FiUser} from "react-icons/fi";
 
 const navigation = [
   {name: 'Dashboard', to: '/'},
@@ -72,9 +72,9 @@ export default function DefaultLayout() {
                       <Menu as="div" className="relative ml-3">
                         <div>
                           <Menu.Button
-                            className="flex max-w-xs items-center rounded-full bg-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
+                            className="flex max-w-xs items-center rounded-full bg-gray-900 p-2.5 focus:outline-none focus:ring-2 focus:ring-gray-500">
                             <span className="sr-only">Open user menu</span>
-                            <FaUser className="text-2xl text-white"/>
+                            <FiUser className="w-6 h-6 text-white"/>
                           </Menu.Button>
                         </div>
                         <Transition
@@ -136,8 +136,8 @@ export default function DefaultLayout() {
                 </div>
                 <div className="border-t border-gray-700 pb-3 pt-4">
                   <div className="flex items-center px-5">
-                    <div className="flex-shrink-0">
-                      <FaUser className="text-2xl text-white"/>
+                    <div className="flex-shrink-0 rounded-full bg-gray-900 p-2.5 focus:ring-2 focus:ring-gray-500">
+                      <FiUser className="w-6 h-6 text-white"/>
                     </div>
                     <div className="ml-3">
                       <div className="text-base font-medium leading-none text-white">{currentUser.name}</div>
