@@ -1,10 +1,10 @@
 import {useEffect, useState} from "react";
-import {userStateContext} from "../../contexts/ContextProvider.jsx";
+import {useStateContext} from "../../contexts/ContextProvider.jsx";
 import { BiTrash} from "react-icons/bi";
 
 export default function QuestionEditor({index = 0, question, deleteQuestion, questionChange}) {
   const [model, setModel] = useState({...question});
-  const {questionTypes} = userStateContext();
+  const {questionTypes} = useStateContext();
 
   // trigger questionChange method whenever the question model changed
   useEffect(() => {

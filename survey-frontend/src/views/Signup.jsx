@@ -1,10 +1,10 @@
 import {Link} from "react-router-dom";
 import {useState} from "react";
 import Axios from "../services/axios.js";
-import {userStateContext} from "../contexts/ContextProvider.jsx";
+import {useStateContext} from "../contexts/ContextProvider.jsx";
 
 export default function Signup() {
-  const {setCurrentUser, setUserToken} = userStateContext();
+  const {setCurrentUser, setUserToken} = useStateContext();
   const [fullName, setFullName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');

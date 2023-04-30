@@ -1,11 +1,12 @@
 import DashboardPage from "../components/DashboardPage.jsx";
-import {userStateContext} from "../contexts/ContextProvider.jsx";
+import {useStateContext} from "../contexts/ContextProvider.jsx";
 import SurveyListItem from "../components/surveys/SurveyListItem.jsx";
 import CustomButton from "../components/core/CustomButton.jsx";
 import { FiPlusCircle } from "react-icons/fi";
 
 export default function Surveys() {
-  const {surveys} = userStateContext();
+  const {surveys} = useStateContext();
+
 
   return (
     <>

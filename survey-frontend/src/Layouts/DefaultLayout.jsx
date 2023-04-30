@@ -2,7 +2,7 @@ import {Fragment, useEffect} from 'react'
 import {Disclosure, Menu, Transition} from '@headlessui/react'
 import {HiBars3BottomRight, HiXMark} from 'react-icons/hi2';
 import {Navigate, NavLink, Outlet} from "react-router-dom";
-import {userStateContext} from "../contexts/ContextProvider.jsx";
+import {useStateContext} from "../contexts/ContextProvider.jsx";
 import {FiUser} from "react-icons/fi";
 import Axios from "../services/axios.js";
 
@@ -17,7 +17,7 @@ function classNames(...classes) {
 
 export default function DefaultLayout() {
   // get user state
-  const {currentUser, userToken, setUserToken, setCurrentUser} = userStateContext();
+  const {currentUser, userToken, setUserToken, setCurrentUser} = useStateContext();
 
   // Logout functionality
   const logout = (event) => {
