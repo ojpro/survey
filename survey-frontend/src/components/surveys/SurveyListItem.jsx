@@ -10,7 +10,7 @@ export default function SurveyListItem({survey,handleClick=()=>{}}) {
         <h3>{survey.title}</h3>
         <div dangerouslySetInnerHTML={{__html: survey.description}} className='overflow-hidden'></div>
         <div className='flex flex-row justify-between gap-2 items-center'>
-          <CustomButton>
+          <CustomButton link to={`/surveys/${survey.slug}`}>
             <CiEdit className='w-5 h-5'/> Edit
           </CustomButton>
           <div className='flex flex-row flex-nowrap justify-around items-center gap-2'>
