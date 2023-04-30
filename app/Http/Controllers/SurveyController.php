@@ -212,7 +212,7 @@ class SurveyController extends Controller
             'type' => ['required', new Enum(QuestionTypeEnum::class)],
             'description' => ['nullable', 'string'],
             'data' => ['present'],
-            'survey_id' => ['exists:users,id']
+            'survey_id' => ['exists:surveys,id']
         ]);
 
         return SurveyQuestion::create($validator->validated());
