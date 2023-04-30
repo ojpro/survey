@@ -1,4 +1,4 @@
-import {Fragment} from 'react'
+import {Fragment, useEffect} from 'react'
 import {Disclosure, Menu, Transition} from '@headlessui/react'
 import {HiBars3BottomRight, HiXMark} from 'react-icons/hi2';
 import {Navigate, NavLink, Outlet} from "react-router-dom";
@@ -34,6 +34,18 @@ export default function DefaultLayout() {
   if (!userToken) {
     return <Navigate to='/login'/>
   }
+
+  useEffect(() => {
+    Axios.get('/user')
+      .then(({data}) => {
+        if (data) {
+          setCurrentUser(data)
+        }
+      })
+      .catch((error) => {
+        console.log(error)
+      })
+  }, [])
 
   return (
     <>
