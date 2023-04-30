@@ -2,7 +2,7 @@ import CustomButton from "../core/CustomButton.jsx";
 import {CiEdit} from "react-icons/ci";
 import {FiExternalLink, FiTrash} from "react-icons/fi";
 
-export default function SurveyListItem({survey,handleClick=()=>{}}) {
+export default function SurveyListItem({ survey, onDeleteClick = (param) => {}}) {
   return (
     <>
       <div className='shadow p-4'>
@@ -17,7 +17,7 @@ export default function SurveyListItem({survey,handleClick=()=>{}}) {
             <CustomButton link circle color={'gray'}>
               <FiExternalLink className='w-5 h-5'/>
             </CustomButton>
-            <CustomButton link circle color={'red'}>
+            <CustomButton link circle color={'red'} handleClick={() => onDeleteClick(survey.id)}>
               <FiTrash className='w-5 h-5'/>
             </CustomButton>
           </div>

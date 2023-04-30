@@ -37,6 +37,18 @@ export default function Surveys() {
     getSurveys(link.url)
   }
 
+  const handleSurveyDelete = (id) => {
+    if (id) {
+      Axios.delete(`/survey/${id}`)
+        .then(() => {
+          getSurveys()
+        })
+        .catch(errors => {
+            console.log(errors)
+          }
+        )
+    }
+  }
   return (
     <>
       <DashboardPage title='Surveys'
@@ -53,10 +65,10 @@ export default function Surveys() {
           <div>
             <div className='grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3 justify-around items-center'>
               {surveys.map((survey) => (
-                <SurveyListItem survey={survey} key={survey.id}/>
+                <SurveyListItem survey={survey} key={survey.id} onDeleteClick={handleSurveyDelete}/>
               ))}
             </div>
-            <Pagination meta={meta} onLinkClick={onPaginationLinkClick}/>
+              <Pagination meta={meta} onLinkClick={onPaginationLinkClick}/>
           </div>
         )}
 
