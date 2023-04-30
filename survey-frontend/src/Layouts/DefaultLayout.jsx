@@ -5,6 +5,7 @@ import {Navigate, NavLink, Outlet} from "react-router-dom";
 import {useStateContext} from "../contexts/ContextProvider.jsx";
 import {FiUser} from "react-icons/fi";
 import Axios from "../services/axios.js";
+import Toast from "../components/core/Toast.jsx";
 
 const navigation = [
   {name: 'Dashboard', to: '/'},
@@ -49,6 +50,7 @@ export default function DefaultLayout() {
 
   return (
     <>
+      <Toast />
       <div className="min-h-full">
         <Disclosure as="nav" className="bg-gray-800">
           {({open}) => (
@@ -177,7 +179,7 @@ export default function DefaultLayout() {
           )}
         </Disclosure>
         {/* Content */}
-        <main className='container mx-auto'>
+        <main>
           <Outlet/>
         </main>
       </div>
