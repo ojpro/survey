@@ -1,10 +1,10 @@
 import {Link} from "react-router-dom";
 
-export default function Pagination({meta,onLinkClick}) {
+export default function Pagination({meta, onLinkClick}) {
 
-  const onclick = (event,link)=>{
+  const onclick = (event, link) => {
     event.preventDefault()
-    if(!link.url) return;
+    if (!link.url) return;
 
     onLinkClick(link)
   }
@@ -17,14 +17,14 @@ export default function Pagination({meta,onLinkClick}) {
           <div className="flex flex-1 justify-between sm:hidden">
             <Link
               to={meta.links[0].url}
-              onClick={(event) => onclick(event,meta.links[0])}
+              onClick={(event) => onclick(event, meta.links[0])}
               className="relative inline-flex items-center rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50"
             >
               Previous
             </Link>
             <Link
               to={meta.links[meta.links.length - 1].url}
-              onClick={(event) => onclick(event,meta.links[meta.links.length - 1])}
+              onClick={(event) => onclick(event, meta.links[meta.links.length - 1])}
               className="relative ml-3 inline-flex items-center rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50"
             >
               Next
@@ -40,22 +40,25 @@ export default function Pagination({meta,onLinkClick}) {
             </p>
           </div>
           <div>
-            <nav className="isolate inline-flex -space-x-px rounded-md shadow-sm" aria-label="Pagination">
+            {meta.per_page <= meta.total && (
+              <nav className="isolate inline-flex -space-x-px rounded-md shadow-sm" aria-label="Pagination">
 
-              {meta.links && meta.links.map((link, index) => (
-                // TODO styled disabled links and fix current page border issue
-                <Link
-                  to={link.url}
-                  onClick={(event) => onclick(event,link)}
-                  className={`relative inline-flex items-center px-4 py-2 text-sm font-semibold ${link.active ? 'ring-blue-400 text-blue-800 bg-blue-100 hover:bg-blue-200' : 'ring-gray-300 text-gray-900 hover:bg-gray-100'} ring-inset ring-1 focus:z-20 focus:outline-offset-0
-                  ${index === 0 ? 'rounded-l-md' : ''} ${index === meta.links.length -1 ? 'rounded-r-md' : ''}`}
+                {meta.links && meta.links.map((link, index) => (
+                  // TODO styled disabled links and fix current page border issue
+                  <Link
+                    to={link.url}
+                    key={index}
+                    onClick={(event) => onclick(event, link)}
+                    className={`relative inline-flex items-center px-4 py-2 text-sm font-semibold ${link.active ? 'ring-blue-400 text-blue-800 bg-blue-100 hover:bg-blue-200' : 'ring-gray-300 text-gray-900 hover:bg-gray-100'} ring-inset ring-1 focus:z-20 focus:outline-offset-0
+                  ${index === 0 ? 'rounded-l-md' : ''} ${index === meta.links.length - 1 ? 'rounded-r-md' : ''}`}
 
-                  dangerouslySetInnerHTML={{__html:link.label}}
-                >
-                </Link>
-              ))}
+                    dangerouslySetInnerHTML={{__html: link.label}}
+                  >
+                  </Link>
+                ))}
 
-            </nav>
+              </nav>
+            )}
           </div>
         </div>
       </div>
