@@ -11,6 +11,8 @@ export default function SurveyQuestions({questions, onQuestionsUpdate}) {
     setModel([...model, {
       id: uuid(), type: 'text', question: "", description: "", data: {}
     }])
+    // trigger question update for the parent
+    onQuestionsUpdate(model);
   }
 
   // handle question change event
@@ -32,6 +34,9 @@ export default function SurveyQuestions({questions, onQuestionsUpdate}) {
 
     // update the model's questions by the newQuestions array
     setModel(newQuestions);
+
+    // send update event
+    onQuestionsUpdate(newQuestions);
   }
 
   const deleteQuestion = (question) => {
@@ -40,12 +45,15 @@ export default function SurveyQuestions({questions, onQuestionsUpdate}) {
 
     // update the questions' model
     setModel(newQuestion)
+
+    // send update event to parent
+    onQuestionsUpdate(newQuestion);
   }
 
   // call onQuestionsUpdate method when model changes
   useEffect(() => {
-    onQuestionsUpdate(model);
-  }, [model])
+    setModel(questions)
+  }, [questions])
   return (<>
     <div className='flex justify-between'>
       <h3 className='text-2xl font-bold'>Questions</h3>
