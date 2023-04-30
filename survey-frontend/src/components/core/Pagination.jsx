@@ -40,7 +40,7 @@ export default function Pagination({meta, onLinkClick}) {
             </p>
           </div>
           <div>
-            {meta.per_page <= meta.total && (
+            {meta.total > meta.per_page && (
               <nav className="isolate inline-flex -space-x-px rounded-md shadow-sm" aria-label="Pagination">
 
                 {meta.links && meta.links.map((link, index) => (

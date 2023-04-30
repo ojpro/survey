@@ -68,12 +68,17 @@ export default function Surveys() {
 
         {!loading && (
           <div>
+            {surveys.length === 0 && (
+              <div className='text-gray-800 text-center my-4'>
+                You don't have any surveys
+              </div>
+            )}
             <div className='grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3 justify-around items-center'>
               {surveys.map((survey) => (
                 <SurveyListItem survey={survey} key={survey.id} onDeleteClick={handleSurveyDelete}/>
               ))}
             </div>
-              <Pagination meta={meta} onLinkClick={onPaginationLinkClick}/>
+            {surveys.length !== 0 && (<Pagination meta={meta} onLinkClick={onPaginationLinkClick}/>)}
           </div>
         )}
 

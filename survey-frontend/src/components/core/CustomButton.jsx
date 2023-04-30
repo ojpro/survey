@@ -21,10 +21,6 @@ export default function CustomButton({
   ]
 
   if (link) {
-    styles = [
-      ...styles,
-    ]
-
     // generate styles based on the color
     switch (color) {
       case "blue":
@@ -52,7 +48,7 @@ export default function CustomButton({
   } else {
     styles = [
       ...styles,
-      'text-white'
+      'text-white',
     ]
   }
 
@@ -89,8 +85,8 @@ export default function CustomButton({
   } else {
     styles = [
       ...styles,
-      'px-2.5',
-      'py-1',
+      'px-3',
+      'py-2',
       'rounded-md',
       'text-white'
     ]
