@@ -61,15 +61,18 @@ class SurveyController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Survey $survey, Request $request)
+    public function show(string $slug, Request $request)
     {
+        // fetch survey using slug
+        $survey = Survey::where('slug', '=', $slug)->first();
+
         $user = $request->user();
 
         if ($user->id !== $survey->user_id) {
             return abort(Response::HTTP_FORBIDDEN, 'Unauthorized to perform this action');
         }
 
-        return SurveyResource($survey);
+        return new SurveyResource($survey);
     }
 
     /**
@@ -130,7 +133,7 @@ class SurveyController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Survey $survey,Request $request)
+    public function destroy(Survey $survey, Request $request)
     {
         $user = $request->user();
 
