@@ -19,11 +19,13 @@ class SurveyResource extends JsonResource
             'id' => $this->id,
             'title' => $this->title,
             'description' => $this->description,
+            'user_id' => $this->user_id,
             'slug' => $this->slug,
             'image_url' => $this->image ? URL::to($this->image) : null,
             'status' => !!$this->status,
-            'expire_date' => $this->expire_date,
-            'created_at' => $this->created_at->diffForHumans()
+            'expire_date' => (new \DateTime($this->expire_date))->format('Y-m-d'),
+            'created_at' => $this->created_at,
+            'questions' => SurveyQuestionResource::collection($this->questions)
         ];
     }
 }
