@@ -21,8 +21,7 @@ export default function Login() {
     Axios.post('/login', {
       email, password, remember: rememberMe
     }).then(({data}) => {
-      // store user and user's token
-      setCurrentUser(data.user);
+      // store user's token
       setUserToken(data.token);
 
     }).catch((error) => {
