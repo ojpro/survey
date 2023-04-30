@@ -29,7 +29,6 @@ export default function Login() {
         // store errors
         setErrors(error.response.data.errors)
       }
-      console.error(error)
     })
   }
 
