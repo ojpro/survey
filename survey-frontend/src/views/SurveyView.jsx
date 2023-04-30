@@ -8,7 +8,7 @@ import {useNavigate, useParams} from "react-router-dom";
 import SurveyQuestions from "../components/surveys/SurveyQuestions.jsx";
 import {BeatLoader} from "react-spinners";
 
-export default function CreateSurvey() {
+export default function SurveyView() {
   const navigate = useNavigate()
   const [survey, setSurvey] = useState({
     title: "",
