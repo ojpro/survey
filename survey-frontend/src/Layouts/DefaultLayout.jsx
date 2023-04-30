@@ -38,8 +38,8 @@ export default function DefaultLayout() {
   useEffect(() => {
     Axios.get('/user')
       .then(({data}) => {
-        if (data) {
-          setCurrentUser(data)
+        if (data.data) {
+          setCurrentUser(data.data)
         }
       })
       .catch((error) => {

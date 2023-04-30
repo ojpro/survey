@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\LoginRequest;
 use App\Http\Requests\SignupRequest;
+use App\Http\Resources\UserResource;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -94,9 +95,8 @@ class AuthController extends Controller
      * Get user information
      */
 
-    public function user(Request $request)
+    public function user(Request $request): UserResource
     {
-        // TODO: return only needed info
-        return $request->user();
+        return new UserResource($request->user());
     }
 }
