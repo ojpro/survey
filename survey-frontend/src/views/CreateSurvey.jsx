@@ -5,6 +5,7 @@ import {HiOutlinePhoto} from "react-icons/hi2";
 import CustomButton from "../components/core/CustomButton.jsx";
 import Axios from "../services/axios.js";
 import {useNavigate} from "react-router-dom";
+import SurveyQuestions from "../components/surveys/SurveyQuestions.jsx";
 
 export default function CreateSurvey() {
   const navigate = useNavigate()
@@ -30,36 +31,49 @@ export default function CreateSurvey() {
       payload.image = payload.image_url;
     }
 
+    // delete the image_url field after saving it
     delete payload.image_url;
 
+    // send survey creation request
     Axios.post('/survey', payload)
       .then(response => {
-        console.log(response)
+        // if created successfully, redirect to the surveys page
         navigate('/surveys');
       })
       .catch(({response}) => {
+        // set errors if exist
         setErrors(response.data.errors)
-        console.log(errors)
       })
   }
 
   // handle image upload
   const handleImageUpload = (event) => {
+    // get select file
     const file = event.target.files[0];
 
+    // create FileReader instance
     const reader = new FileReader()
 
+    // listen for reader update
     reader.onload = (result) => {
+      // then update survey image fields
       setSurvey({
         ...survey,
         image: file,
         image_url: reader.result
       })
 
+      // clear the input value
       event.target.value = '';
     }
 
+    // set the file to base64 format
     reader.readAsDataURL(file);
+  }
+
+  // handle survey update
+  const onQuestionsUpdate = (questions) => {
+    setSurvey({...survey, questions});
   }
 
   return (
@@ -69,6 +83,7 @@ export default function CreateSurvey() {
           <div className='shadow-md sm:overflow-hidden sm:rounded-md'>
             <div className='space-y-6 bg-white px-4 py-5 sm:p-6'>
               {/* Survey Image */}
+              {/* TODO: clicking outside the button trigger the file select */}
               <label htmlFor="image_field" className='block text-sm font-medium text-gray-700'>
                 Picture
               </label>
@@ -159,6 +174,10 @@ export default function CreateSurvey() {
                 </div>
               </div>
               {/* // Survey Status */}
+
+              {/* Survey Questions */}
+              <SurveyQuestions questions={survey.questions} onQuestionsUpdate={onQuestionsUpdate}/>
+              {/* // Survey Questions */}
             </div>
             <div className='bg-gray-50 px-4 py-3 text-right sm:px-6'>
               <CustomButton>
