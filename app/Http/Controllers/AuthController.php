@@ -90,4 +90,13 @@ class AuthController extends Controller
 
     }
 
+    /*
+     * Get user information
+     */
+
+    public function user(Request $request)
+    {
+        // TODO: return only needed info
+        return $request->user();
+    }
 }
