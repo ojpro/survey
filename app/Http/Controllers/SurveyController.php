@@ -61,11 +61,8 @@ class SurveyController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $slug, Request $request)
+    public function show(Survey $survey, Request $request) // TODO: use slug instead of id
     {
-        // fetch survey using slug
-        $survey = Survey::where('slug', '=', $slug)->first();
-
         $user = $request->user();
 
         if ($user->id !== $survey->user_id) {
