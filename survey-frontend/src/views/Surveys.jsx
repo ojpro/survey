@@ -6,11 +6,14 @@ import {useEffect, useState} from "react";
 import Axios from "../services/axios.js";
 import Pagination from "../components/core/Pagination.jsx";
 import {BeatLoader} from "react-spinners";
+import {useStateContext} from "../contexts/ContextProvider.jsx";
 
 export default function Surveys() {
   const [surveys, setSurveys] = useState([]);
   const [loading, setLoading] = useState(false);
   const [meta, setMeta] = useState({});
+
+  const {showToast} = useStateContext()
 
   // get surveys
   const getSurveys = (url = '/survey') => {
@@ -47,6 +50,8 @@ export default function Surveys() {
             console.log(errors)
           }
         )
+      // show success message
+      showToast( 'Survey Deleted Successfully')
     }
   }
   return (

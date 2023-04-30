@@ -7,6 +7,7 @@ import Axios from "../services/axios.js";
 import {useNavigate, useParams} from "react-router-dom";
 import SurveyQuestions from "../components/surveys/SurveyQuestions.jsx";
 import {BeatLoader} from "react-spinners";
+import {useStateContext} from "../contexts/ContextProvider.jsx";
 
 export default function SurveyView() {
   const navigate = useNavigate()
@@ -22,6 +23,7 @@ export default function SurveyView() {
   const [errors, setErrors] = useState({})
   const [loading, setLoading] = useState(false)
   const {id} = useParams()
+  const {showToast} = useStateContext()
 
 
   // handle form submit
@@ -53,6 +55,14 @@ export default function SurveyView() {
       .then(response => {
         // if created successfully, redirect to the surveys page
         navigate('/surveys');
+
+        // show success message
+        if(id){
+          showToast( 'Survey Updated Successfully')
+        }else{
+          showToast( 'Survey Created Successfully')
+        }
+
       })
       .catch(({response}) => {
         // set errors if exist
