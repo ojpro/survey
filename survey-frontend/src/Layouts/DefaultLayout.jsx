@@ -177,7 +177,7 @@ export default function DefaultLayout() {
           )}
         </Disclosure>
         {/* Content */}
-        <main>
+        <main className='container mx-auto'>
           <Outlet/>
         </main>
       </div>
