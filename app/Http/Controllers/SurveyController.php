@@ -97,7 +97,7 @@ class SurveyController extends Controller
         $survey->update($data);
 
         // get survey's questions ids as an array
-        $old_ids = $survey->questions()->plunk('id')->toArray();
+        $old_ids = Arr::pluck($survey->questions()->get(),'id');
 
         // get ids of new questions
         $new_ids = Arr::pluck($data['questions'], 'id');
