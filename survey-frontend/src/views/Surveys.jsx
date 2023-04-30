@@ -13,7 +13,7 @@ export default function Surveys() {
   const [meta, setMeta] = useState({});
 
   // get surveys
-  const getSurveys = (url)=>{
+  const getSurveys = (url = '/survey') => {
     // show loading
     setLoading(true)
     Axios.get(url)
@@ -30,10 +30,10 @@ export default function Surveys() {
   // on component mount
   useEffect(() => {
     // fetch surveys
-    getSurveys('/survey')
+    getSurveys()
   }, [])
 
-  const onPaginationLinkClick = (link)=>{
+  const onPaginationLinkClick = (link) => {
     getSurveys(link.url)
   }
 
