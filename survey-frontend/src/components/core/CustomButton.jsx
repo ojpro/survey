@@ -7,6 +7,7 @@ export default function CustomButton({
                                        circle = false,
                                        handleClick = () => {
                                        },
+                                       type='button',
                                        children
                                      }) {
   // button styling classes
@@ -117,7 +118,7 @@ export default function CustomButton({
   return (
     <>
       {link && <Link to={to} className={styles.join(' ')} onClick={() => handleClick()}>{children}</Link>}
-      {!link && <button className={styles.join(' ')} onClick={() => handleClick()}>{children}</button>}
+      {!link && <button type={type} className={styles.join(' ')} onClick={() => handleClick()}>{children}</button>}
     </>
   );
 }

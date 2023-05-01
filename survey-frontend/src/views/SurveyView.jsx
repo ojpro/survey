@@ -181,7 +181,7 @@ export default function SurveyView() {
                   <label htmlFor="description" className='block text-sm font-medium text-gray-700'>
                     Survey Description
                   </label>
-                  <textarea name='description' id='description' value={survey.description}
+                  <textarea name='description' id='description' value={survey.description || ''}
                             placeholder='Survey Description'
                             className='mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-50 focus:ring-2 focus:ring-blue-500 sm:text-sm'
                             onChange={(event) => setSurvey({...survey, description: event.target.value})}></textarea>
@@ -227,7 +227,7 @@ export default function SurveyView() {
                 {/* // Survey Questions */}
               </div>
               <div className='bg-gray-50 px-4 py-3 text-right sm:px-6'>
-                <CustomButton>
+                <CustomButton type='submit'>
                   <FiSave className="w-5 h-5"/> Save
                 </CustomButton>
               </div>
