@@ -57,10 +57,10 @@ export default function SurveyView() {
         navigate('/surveys');
 
         // show success message
-        if(id){
-          showToast( 'Survey Updated Successfully')
-        }else{
-          showToast( 'Survey Created Successfully')
+        if (id) {
+          showToast('Survey Updated Successfully')
+        } else {
+          showToast('Survey Created Successfully')
         }
 
       })
