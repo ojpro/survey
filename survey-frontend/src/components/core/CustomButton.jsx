@@ -18,6 +18,7 @@ export default function CustomButton({
     'border-transparent',
     'focus:ring-2',
     'focus:ring-offset-1',
+    'shadow',
     'flex flex-row gap-2 justify-around items-center',
   ]
 
@@ -46,11 +47,6 @@ export default function CustomButton({
         ];
         break
     }
-  } else {
-    styles = [
-      ...styles,
-      'text-white',
-    ]
   }
 
   if (circle) {

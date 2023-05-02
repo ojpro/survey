@@ -1,6 +1,6 @@
 import DashboardPage from "../components/DashboardPage.jsx";
 import {useEffect, useState} from "react";
-import {FiSave} from "react-icons/fi";
+import {FiExternalLink, FiSave, FiTrash} from "react-icons/fi";
 import {HiOutlinePhoto} from "react-icons/hi2";
 import CustomButton from "../components/core/CustomButton.jsx";
 import Axios from "../services/axios.js";
@@ -13,6 +13,7 @@ export default function SurveyView() {
   const navigate = useNavigate()
   const [survey, setSurvey] = useState({
     title: "",
+    slug: '',
     status: false,
     description: "",
     image: null,
@@ -230,6 +231,8 @@ export default function SurveyView() {
                   </div>
                 </div>
                 {/* // Survey Status */}
+
+                {/*// TODO: show question validation errors*/}
 
                 {/* Survey Questions */}
                 <SurveyQuestions questions={survey.questions} onQuestionsUpdate={onQuestionsUpdate}/>

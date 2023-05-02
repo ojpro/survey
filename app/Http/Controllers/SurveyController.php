@@ -94,7 +94,7 @@ class SurveyController extends Controller
         $survey->update($data);
 
         // get survey's questions ids as an array
-        $old_ids = Arr::pluck($survey->questions()->get(),'id');
+        $old_ids = Arr::pluck($survey->questions()->get(), 'id');
 
         // get ids of new questions
         $new_ids = Arr::pluck($data['questions'], 'id');
@@ -208,6 +208,7 @@ class SurveyController extends Controller
             $question['uuid'] = $question['id'];
             $question['data'] = json_encode($question['data']);
         }
+        // TODO: create validation request class
         $validator = Validator::make($question, [
             'uuid' => ['required', 'string', 'unique:survey_questions,uuid'],
             'question' => ['required', 'string'],
