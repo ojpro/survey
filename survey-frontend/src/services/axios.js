@@ -18,6 +18,9 @@ Axios.interceptors.response.use(response => {
   // if the response not authorized
   if (error.response && error.response.status === 401) {
     // redirect to the login page
+    // TODO: improve this
+    localStorage.removeItem('TOKEN')
+    window.location.reload()
     router.navigate('/login');
     return error;
   }
