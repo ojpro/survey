@@ -240,4 +240,18 @@ class SurveyController extends Controller
 
         return $surveyQuestion->update($validator->validated());
     }
+
+    /*
+     *  Fetch survey information for public viewing
+     */
+    public function getSurvey(Survey $survey)
+    {
+        $current_time = new \DateTime();
+        $expire_date = new \DateTime($survey->expire_date);
+
+        if (!$survey->status || ($current_time > $expire_date)) {
+            return response('', 404);
+        }
+        return new SurveyResource($survey);
+    }
 }
