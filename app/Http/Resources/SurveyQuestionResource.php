@@ -16,6 +16,7 @@ class SurveyQuestionResource extends JsonResource
     {
         return [
             'id' => $this->id,
+            'uuid' => $this->uuid,
             'type' => $this->type,
             'question' => $this->question,
             'description' => $this->description,

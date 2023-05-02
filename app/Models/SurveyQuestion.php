@@ -10,6 +10,6 @@ class SurveyQuestion extends Model
     use HasFactory;
 
     protected $fillable = [
-        'type', 'question', 'description', 'data', 'survey_id'
+        'uuid', 'type', 'question', 'description', 'data', 'survey_id'
     ];
 }

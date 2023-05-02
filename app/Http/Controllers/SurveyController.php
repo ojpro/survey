@@ -205,9 +205,11 @@ class SurveyController extends Controller
     {
         // convert question into
         if (is_array($question['data'])) {
+            $question['uuid'] = $question['id'];
             $question['data'] = json_encode($question['data']);
         }
         $validator = Validator::make($question, [
+            'uuid' => ['required', 'string', 'unique:survey_questions,uuid'],
             'question' => ['required', 'string'],
             'type' => ['required', new Enum(QuestionTypeEnum::class)],
             'description' => ['nullable', 'string'],
