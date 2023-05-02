@@ -14,7 +14,7 @@ export default function SurveyListItem({ survey, onDeleteClick = (param) => {}})
             <CiEdit className='w-5 h-5'/> Edit
           </CustomButton>
           <div className='flex flex-row flex-nowrap justify-around items-center gap-2'>
-            <CustomButton link circle color={'gray'}>
+            <CustomButton link circle color={'gray'} to={`/view/surveys/${survey.slug}`}>
               <FiExternalLink className='w-5 h-5'/>
             </CustomButton>
             <CustomButton link circle color={'red'} handleClick={() => onDeleteClick(survey.id)}>
