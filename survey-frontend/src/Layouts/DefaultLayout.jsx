@@ -50,20 +50,16 @@ export default function DefaultLayout() {
 
   return (
     <>
-      <Toast />
+      <Toast/>
       <div className="min-h-full">
-        <Disclosure as="nav" className="bg-gray-800">
+        <Disclosure as="nav" className="bg-blue-500 shadow">
           {({open}) => (
             <>
               <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
                 <div className="flex h-16 items-center justify-between">
                   <div className="flex items-center">
                     <div className="flex-shrink-0">
-                      <img
-                        className="h-8 w-8"
-                        src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=500"
-                        alt="Your Company"
-                      />
+                     <span className='text-xl font-semibold text-white'>Surveys</span>
                     </div>
                     <div className="hidden md:block">
                       <div className="ml-10 flex items-baseline space-x-4">
@@ -73,8 +69,8 @@ export default function DefaultLayout() {
                             to={item.to}
                             className={({isActive}) => classNames(
                               isActive
-                                ? 'bg-gray-900 text-white'
-                                : 'text-gray-300 hover:bg-gray-700 hover:text-white',
+                                ? 'bg-blue-600 text-white'
+                                : 'hover:bg-blue-700 text-white',
                               'rounded-md px-3 py-2 text-sm font-medium'
                             )}
                             aria-current={item.current ? 'page' : undefined}
@@ -91,9 +87,10 @@ export default function DefaultLayout() {
                       <Menu as="div" className="relative ml-3">
                         <div>
                           <Menu.Button
-                            className="flex max-w-xs items-center rounded-full bg-gray-900 p-2.5 focus:outline-none focus:ring-2 focus:ring-gray-500">
+                            className="flex max-w-xs items-center rounded-full bg-gray-900 p-2.5 focus:outline-none focus:ring-2 focus:ring-blue-700 group">
                             <span className="sr-only">Open user menu</span>
-                            <FiUser className="w-6 h-6 text-white"/>
+                            <FiUser className="w-6 h-6 text-white"/> <span
+                            className='group-hover:block ease-in-out delay-300 hidden mx-1 text-white text-sm text-gray-200'> &nbsp; {currentUser.name}</span>
                           </Menu.Button>
                         </div>
                         <Transition
@@ -125,7 +122,7 @@ export default function DefaultLayout() {
                   <div className="-mr-2 flex md:hidden">
                     {/* Mobile menu button */}
                     <Disclosure.Button
-                      className="inline-flex items-center justify-center rounded-md bg-gray-800 p-2 text-gray-400 hover:bg-gray-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
+                      className="inline-flex items-center justify-center rounded-md bg-blue-600 p-2 text-gray-200 hover:bg-blue-700 hover:text-white focus:outline-none focus:ring-1 focus:ring-white">
                       <span className="sr-only">Open main menu</span>
                       {open ? (
                         <HiXMark className="block h-6 w-6" aria-hidden="true"/>
@@ -144,8 +141,8 @@ export default function DefaultLayout() {
                       key={item.name}
                       to={item.to}
                       className={({isActive}) => classNames(
-                        isActive ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white',
-                        'block rounded-md px-3 py-2 text-base font-medium'
+                        isActive ? 'bg-blue-600' : 'hover:bg-blue-700',
+                        'block rounded-md px-3 py-2 text-base font-medium text-white'
                       )}
                       aria-current={item.current ? 'page' : undefined}
                     >
@@ -160,7 +157,7 @@ export default function DefaultLayout() {
                     </div>
                     <div className="ml-3">
                       <div className="text-base font-medium leading-none text-white">{currentUser.name}</div>
-                      <div className="text-sm font-medium leading-none text-gray-400">{currentUser.email}</div>
+                      <div className="text-xs leading-1 text-gray-100 py-1">{currentUser.email}</div>
                     </div>
                   </div>
                   <div className="mt-3 space-y-1 px-2">
@@ -168,7 +165,7 @@ export default function DefaultLayout() {
                       as="a"
                       href='#'
                       onClick={(event) => logout(event)}
-                      className="block rounded-md px-3 py-2 text-base font-medium text-gray-400 hover:bg-gray-700 hover:text-white"
+                      className="block rounded-md px-3 py-2 text-base font-medium text-gray-100 hover:bg-blue-600 hover:text-white"
                     >
                       Log out
                     </Disclosure.Button>
