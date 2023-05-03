@@ -3,11 +3,14 @@
 namespace App\Http\Controllers;
 
 use App\Enums\QuestionTypeEnum;
+use App\Http\Requests\StoreSurveyAnswerRequest;
 use App\Http\Requests\StoreSurveyRequest;
 use App\Http\Requests\UpdateSurveyRequest;
 use App\Http\Resources\SurveyResource;
 use App\Models\Survey;
+use App\Models\SurveyAnswer;
 use App\Models\SurveyQuestion;
+use App\Models\SurveyQuestionAnswer;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Arr;
@@ -254,5 +257,40 @@ class SurveyController extends Controller
             return response('', 404);
         }
         return new SurveyResource($survey);
+    }
+
+    /*
+     * Store survey Answer
+     */
+    public function storeAnswer(StoreSurveyAnswerRequest $request, Survey $survey)
+    {
+
+        $validated = $request->validated();
+
+        // TODO: use start and end for dashboard analytics
+        $surveyAnswer = SurveyAnswer::create([
+            'survey_id' => $survey->id,
+            'start_date' => date('Y-m-d H:i:s'),
+            'end_date' => date('Y-m-d H:i:s')
+        ]);
+
+        foreach ($validated['answers'] as $questionUuid => $answer) {
+            $question = SurveyQuestion::where(['uuid' => $questionUuid, 'survey_id' => $survey->id])->first();
+
+            if (!$question) {
+                return response('Invalid question\'s UUID', 400);
+            }
+
+            $data = [
+                'survey_question_id' => $question->id,
+                'survey_answer_id' => $surveyAnswer->id,
+                'answer' => is_array($answer) ? json_encode($answer) : $answer
+            ];
+
+            $questionAnswer = SurveyQuestionAnswer::create($data);
+        }
+
+        return response('', 201);
+
     }
 }
