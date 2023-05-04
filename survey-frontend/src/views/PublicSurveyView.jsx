@@ -41,7 +41,7 @@ const PublicSurveyView = () => {
   };
 
   return (
-    <div>
+    <div className='bg-gray-100 min-h-screen'>
       {loading && (
         <div className='text-center m-8'>
           <BeatLoader color="#3b82f6"/>
@@ -55,11 +55,11 @@ const PublicSurveyView = () => {
       )}
 
       {!loading && (
-        <div className='p-4 bg-gray-100'>
-          <div className='bg-gray-50 shadow rounded-md p-8 text-center flex flex-col gap-4 my-4 max-w-fit'>
+        <div className='p-4 w-full lg:w-1/2 mx-auto'>
+          <div className='bg-gray-50 shadow rounded-md p-8 text-center flex flex-col gap-4 my-4'>
             <img src={survey.image_url} alt={survey.title} className='w-48 h-auto mx-auto'/>
             <h1>{survey.title}</h1>
-            <span>{survey.expire_date}</span>
+            <span>Expire after: <b>{survey.expire_date}</b></span>
             <p>{survey.description}</p>
           </div>
           <div>

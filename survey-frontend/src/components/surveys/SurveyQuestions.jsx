@@ -2,6 +2,7 @@ import {BiPlus} from "react-icons/bi";
 import {useEffect, useState} from "react";
 import {v4 as uuid} from 'uuid';
 import QuestionEditor from "./QuestionEditor.jsx";
+import CustomButton from "../core/CustomButton.jsx";
 
 export default function SurveyQuestions({questions, onQuestionsUpdate}) {
   const [model, setModel] = useState([...questions]);
@@ -57,11 +58,10 @@ export default function SurveyQuestions({questions, onQuestionsUpdate}) {
   return (<>
     <div className='flex justify-between'>
       <h3 className='text-2xl font-bold'>Questions</h3>
-      <button type='button'
-              className='flex items-center text-sm py-2 px-4 rounded-md text-white bg-gray-600 hover:bg-gray-700'
-              onClick={() => addQuestion()}>
+      <CustomButton type='button'
+                    handleClick={() => addQuestion()}>
         <BiPlus className='w-4 mr-2'/> Add Question
-      </button>
+      </CustomButton>
     </div>
 
     {model.length ? (model.map((question, index) => (
