@@ -12,7 +12,7 @@ export default function CustomButton({
                                        children
                                      }) {
   // button styling classes
-  let styles = ['my-2', 'whitespace-nowrap', 'border-2', 'border-transparent', 'focus:ring-2', 'focus:ring-offset-1', 'shadow', 'flex flex-row gap-2 justify-around items-center',]
+  let styles = ['my-2', 'whitespace-nowrap', 'border-2', 'border-transparent', 'focus:ring-2', 'focus:ring-offset-1', 'shadow', 'flex flex-row gap-2 justify-around items-center','hover:shadow-md']
 
   if (link) {
     // generate styles based on the color
@@ -30,7 +30,7 @@ export default function CustomButton({
   }
 
   if (circle) {
-    styles = [...styles, 'w-8', 'h-8', 'items-center', 'justify-center', 'rounded-full']
+    styles = [...styles, 'items-center', 'justify-center', 'rounded-full','p-2']
     // generate styles based on the color
     switch (color) {
       case "blue":
