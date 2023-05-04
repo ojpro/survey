@@ -49,7 +49,7 @@ export default function CustomButton({
     // generate styles based on the color
     switch (color) {
       case "blue":
-        styles = [...styles, `bg-primary`,];
+        styles = [...styles, `bg-blue-400`,];
         break
       case "red":
         styles = [...styles, `bg-error`,];
