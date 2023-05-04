@@ -54,13 +54,12 @@ export default function SurveyView() {
     // send survey creation request
     res
       .then(response => {
-        // if created successfully, redirect to the surveys page
-        navigate('/surveys');
-
         // show success message
         if (id) {
           showToast('Survey Updated Successfully')
         } else {
+          // if created successfully, redirect to the surveys page
+          navigate('/surveys');
           showToast('Survey Created Successfully')
         }
 
@@ -141,7 +140,7 @@ export default function SurveyView() {
         )}
         {!loading && (
           <form action="#" method="POST" onSubmit={handleSubmit}>
-            <div className='shadow-md sm:overflow-hidden sm:rounded-md p-6'>
+            <div className='shadow-md sm:overflow-hidden sm:rounded-lg p-6'>
               <div className='space-y-6 bg-white px-4 py-5 sm:p-6'>
                 {/* Survey Image */}
                 {/* TODO: clicking outside the button trigger the file select */}
@@ -180,7 +179,7 @@ export default function SurveyView() {
                     Survey Title
                   </label>
                   <input type="text" name='title' id='title' value={survey.title} placeholder='Survey Title'
-                         className='mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-50 focus:ring-2 focus:ring-blue-500 sm:text-sm'
+                         className='block input border-gray-300 focus:border-blue-500 focus:outline-none focus:ring-blue-500 sm:text-sm w-full'
                          onChange={(event) => setSurvey({...survey, title: event.target.value})}/>
                   {errors.title && (
                     <span className='text-sm text-red-500 p-1'>
@@ -208,7 +207,7 @@ export default function SurveyView() {
                     Expire Date
                   </label>
                   <input type="date" name='expire_date' id='expire_date' value={survey.expire_date}
-                         className='mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-50 focus:ring-2 focus:ring-blue-500 sm:text-sm'
+                         className='block input border-gray-300 focus:border-blue-500 focus:outline-none focus:ring-blue-500 sm:text-sm w-full'
                          onChange={(event) => setSurvey({...survey, expire_date: event.target.value})}/>
                   {errors.expire_date && (
                     <span className='text-sm text-red-500 p-1'>
