@@ -121,13 +121,17 @@ export default function SurveyView() {
   return (
     <>
       <DashboardPage title={id ? 'Update Survey' : 'Create new Survey'} buttons={(
-        <div className='flex flex-row gap-2 items-center justify-around'>
-          <CustomButton link to={`/view/surveys/${survey.slug}`}>
-            <FiExternalLink className='w-5 h-5 mr-2'/> Public Link
-          </CustomButton>
-          <CustomButton color='red'>
-            <FiTrash className='w-5 h-5 mr-2'/> Delete Survey
-          </CustomButton>
+        <div>
+          {id && (
+            <div className='flex flex-row gap-2 items-center justify-around'>
+              <CustomButton link to={`/view/surveys/${survey.slug}`} target='_blank'>
+                <FiExternalLink className='w-5 h-5 mr-2'/> Public Link
+              </CustomButton>
+              <CustomButton color='red'>
+                <FiTrash className='w-5 h-5 mr-2'/> Delete Survey
+              </CustomButton>
+            </div>
+          )}
         </div>
       )}>
         {loading && (
