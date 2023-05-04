@@ -5,7 +5,7 @@ export default function Toast() {
   return (
     <>
       {toast.show && (
-        <div className="toast toast-end">
+        <div className="toast toast-end z-10">
           <div className="alert alert-success text-white">
             <div>
               <span>{toast.message}</span>
