@@ -141,7 +141,7 @@ export default function SurveyView() {
         )}
         {!loading && (
           <form action="#" method="POST" onSubmit={handleSubmit}>
-            <div className='shadow-md sm:overflow-hidden sm:rounded-md'>
+            <div className='shadow-md sm:overflow-hidden sm:rounded-md p-6'>
               <div className='space-y-6 bg-white px-4 py-5 sm:p-6'>
                 {/* Survey Image */}
                 {/* TODO: clicking outside the button trigger the file select */}
@@ -166,7 +166,7 @@ export default function SurveyView() {
 
                   <button
                     type="button"
-                    className="relative ml-5 rounded-md border border-gray-300 bg-white py-2 px-3 text-sm font-medium leading-4 text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2">
+                    className="relative overflow-hidden ml-5 rounded-md border border-gray-300 bg-white py-2 px-3 text-sm font-medium leading-4 text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2">
                     <input type="file" id='image_field' className='absolute inset-0 opacity-0'
                            onChange={handleImageUpload}/>
                     Change
