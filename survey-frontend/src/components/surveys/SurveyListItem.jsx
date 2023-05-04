@@ -2,14 +2,21 @@ import CustomButton from "../core/CustomButton.jsx";
 import {CiEdit} from "react-icons/ci";
 import {FiExternalLink, FiTrash} from "react-icons/fi";
 
-export default function SurveyListItem({ survey, onDeleteClick = (param) => {}}) {
+export default function SurveyListItem({
+                                         survey, onDeleteClick = (param) => {
+  }
+                                       }) {
   return (
     <>
-      <div className='shadow p-4'>
-        <img src={survey.image_url} alt={survey.title} className='w-full max-h-fit object-cover'/>
-        <h3>{survey.title}</h3>
-        <div dangerouslySetInnerHTML={{__html: survey.description}} className='overflow-hidden'></div>
-        <div className='flex flex-row justify-between gap-2 items-center'>
+      <div className="card w-96 bg-base-100 shadow-xl">
+        <figure className="px-12 pt-12">
+          <img src={survey.image_url} alt={survey.title} className="rounded-xl"/>
+        </figure>
+        <div className="card-body items-center text-center">
+          <h2 className="card-title">Shoes!</h2>
+          <p>{survey.description}</p>
+        </div>
+        <div className='flex flex-row justify-between gap-2 items-center card-actions p-4'>
           <CustomButton link to={`/surveys/${survey.id}`}>
             <CiEdit className='w-5 h-5'/> Edit
           </CustomButton>
