@@ -81,7 +81,7 @@ export default function DefaultLayout() {
 
               </ul>
             </div>
-            <NavLink to='/' className="btn btn-ghost normal-case text-xl text-white">daisyUI</NavLink>
+            <NavLink to='/' className="btn btn-ghost normal-case text-xl text-white">Surveys</NavLink>
           </div>
           <div className="navbar-center hidden lg:flex">
             <ul className="menu menu-horizontal px-1">

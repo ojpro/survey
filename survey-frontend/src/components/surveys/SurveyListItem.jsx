@@ -8,7 +8,7 @@ export default function SurveyListItem({
                                        }) {
   return (
     <>
-      <div className="card w-96 bg-base-100 shadow-xl">
+      <div className="card w-96 bg-base-100 shadow-md hover:shadow-lg">
         <figure className="px-12 pt-12">
           <img src={survey.image_url} alt={survey.title} className="rounded-xl"/>
         </figure>
@@ -21,7 +21,7 @@ export default function SurveyListItem({
             <CiEdit className='w-5 h-5'/> Edit
           </CustomButton>
           <div className='flex flex-row flex-nowrap justify-around items-center gap-2'>
-            <CustomButton link circle color={'gray'} to={`/view/surveys/${survey.slug}`}>
+            <CustomButton link circle color={'gray'} to={`/view/surveys/${survey.slug}`} target='_blank'>
               <FiExternalLink className='w-5 h-5'/>
             </CustomButton>
             <CustomButton link circle color={'red'} handleClick={() => onDeleteClick(survey.id)}>
