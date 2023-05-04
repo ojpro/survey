@@ -271,7 +271,7 @@ class SurveyController extends Controller
         $surveyAnswer = SurveyAnswer::create([
             'survey_id' => $survey->id,
             'start_date' => date('Y-m-d H:i:s'),
-            'end_date' => date('Y-m-d H:i:s')
+            'end_date' => null
         ]);
 
         foreach ($validated['answers'] as $questionUuid => $answer) {

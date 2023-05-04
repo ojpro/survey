@@ -51,7 +51,7 @@ export default function DefaultLayout() {
       <Toast/>
 
 
-      <div className="min-h-full container mx-auto">
+      <div className="min-h-full container mx-auto p-1">
 
         {/* Navbar */}
         <div className="navbar bg-primary m-3 rounded-full px-8">
