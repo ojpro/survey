@@ -53,10 +53,11 @@ export default function SurveyView() {
 
     // send survey creation request
     res
-      .then(response => {
+      .then(({data}) => {
         // show success message
         if (id) {
-          showToast('Survey Updated Successfully')
+          setSurvey(data.data)
+          showToast('Survey Updated Successfully');
         } else {
           // if created successfully, redirect to the surveys page
           navigate('/surveys');
