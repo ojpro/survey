@@ -8,7 +8,6 @@ export const PublicQuestionComponent = ({question, onAnswerChange}) => {
       selectedOptions = selectedOptions.filter((item) => item.uuid !== option.uuid)
     }
 
-
     onAnswerChange(selectedOptions)
   }
 
@@ -23,13 +22,13 @@ export const PublicQuestionComponent = ({question, onAnswerChange}) => {
         {/* TODO: improve code */}
         {question.type === 'text' && (
           <div className='my-2'>
-            <input type="text" onChange={(event) => onAnswerChange(option)}
+            <input type="text" onChange={(event) => onAnswerChange(event.target.value)}
                    className='rounded border-gray-300 shadow-sm focus:ring-blue-500'/>
           </div>
         )}
         {question.type === 'select' && (
           <div className='my-2'>
-            <select name="" id="" onChange={(event) => onAnswerChange(option)}
+            <select name="" id="" onChange={(event) => onAnswerChange(event.target.value)}
                     className='rounded border-gray-300 shadow-sm focus:ring-blue-500'>
               <option value=''>Please Select and Option</option>
               {question.data.options.map((option, index) => (
@@ -68,8 +67,8 @@ export const PublicQuestionComponent = ({question, onAnswerChange}) => {
 
         {question.type === 'textarea' && (
           <div className='my-2'>
-            <textarea onChange={(event) => onAnswerChange(option)}
-                      className='rounded border-gray-300 shadow-sm focus:ring-blue-500 w-full md:w-1/2 lg:w-1/3'></textarea>
+              <textarea onChange={(event) => onAnswerChange(event.target.value)}
+                        className='rounded border-gray-300 shadow-sm focus:ring-blue-500 w-full md:w-1/2 lg:w-1/3'></textarea>
           </div>
         )}
       </div>
