@@ -1,4 +1,4 @@
-import {useParams} from "react-router-dom";
+import {useNavigate, useParams} from "react-router-dom";
 import {useEffect, useState} from "react";
 import Axios from "../services/axios.js";
 import {BeatLoader} from "react-spinners";
@@ -9,8 +9,8 @@ const PublicSurveyView = () => {
   const {slug} = useParams();
   const [survey, setSurvey] = useState({questions: []})
   const [loading, setLoading] = useState(false);
-  const [surveyCompleted, setSurveyCompleted] = useState(false);
   const answers = {}
+  const navigate = useNavigate()
 
   // fetch survey on component mount
   useEffect(() => {
@@ -34,7 +34,7 @@ const PublicSurveyView = () => {
     // send survey answers
     Axios.post(`/survey/answer/${survey.answer_id}`, {answers})
       .then((response) => {
-        setSurveyCompleted(true)
+        navigate('/thanks', {replace: true})
       }).catch((errors) => {
       console.log(errors)
     })
@@ -45,12 +45,6 @@ const PublicSurveyView = () => {
       {loading && (
         <div className='text-center m-8'>
           <BeatLoader color="#3b82f6"/>
-        </div>
-      )}
-
-      {surveyCompleted && (
-        <div className='p-2 bg-green-500 text-white rounded m-4 shadow'>
-          Thank you for your time, we appreciate your honest answers.
         </div>
       )}
 
