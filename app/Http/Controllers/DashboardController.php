@@ -29,6 +29,7 @@ class DashboardController extends Controller
             ->join('surveys', 'survey_answers.survey_id', '=', 'surveys.id')
             ->where('surveys.user_id', $user->id)
             ->whereBetween('start_date', [$startOfMonth, $endOfMonth])
+            ->orderBy('start_date')
             ->get();
 
         // total answers in the last month
