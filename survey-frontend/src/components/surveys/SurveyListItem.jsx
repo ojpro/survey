@@ -13,7 +13,7 @@ export default function SurveyListItem({
           <img src={survey.image_url} alt={survey.title} className="rounded-xl"/>
         </figure>
         <div className="card-body items-center text-center">
-          <h2 className="card-title">Shoes!</h2>
+          <h2 className="card-title">{survey.title}</h2>
           <p>{survey.description}</p>
         </div>
         <div className='flex flex-row justify-between gap-2 items-center card-actions p-4'>
