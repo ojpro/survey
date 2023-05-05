@@ -100,6 +100,14 @@ export default function SurveyView() {
     setSurvey({...survey, questions});
   }
 
+  const deleteSurvey = () => {
+    Axios.delete(`/survey/${survey.id}`)
+      .then(() => {
+        showToast('Survey Deleted Successfully')
+        navigate('/surveys');
+      })
+  }
+
   // on mount
   useEffect(() => {
     if (id) {
@@ -126,7 +134,7 @@ export default function SurveyView() {
               <CustomButton link to={`/view/surveys/${survey.slug}`} target='_blank'>
                 <FiExternalLink className='w-5 h-5 mr-2'/> Public Link
               </CustomButton>
-              <CustomButton color='red'>
+              <CustomButton color='red' handleClick={() => deleteSurvey()}>
                 <FiTrash className='w-5 h-5 mr-2'/> Delete Survey
               </CustomButton>
             </div>
