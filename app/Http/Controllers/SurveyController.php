@@ -3,14 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Enums\QuestionTypeEnum;
-use App\Http\Requests\StoreSurveyAnswerRequest;
 use App\Http\Requests\StoreSurveyRequest;
 use App\Http\Requests\UpdateSurveyRequest;
 use App\Http\Resources\SurveyResource;
 use App\Models\Survey;
 use App\Models\SurveyAnswer;
 use App\Models\SurveyQuestion;
-use App\Models\SurveyQuestionAnswer;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Arr;
@@ -256,6 +254,16 @@ class SurveyController extends Controller
         if (!$survey->status || ($current_time > $expire_date)) {
             return response('', 404);
         }
+
+        // start a new survey answer
+        $surveyAnswer = SurveyAnswer::create([
+            'survey_id' => $survey->id,
+            'start_date' => date('Y-m-d H:i:s'),
+            'end_date' => null
+        ]);
+
+        $survey['answer_id'] = $surveyAnswer->id;
+
         return new SurveyResource($survey);
     }
 
