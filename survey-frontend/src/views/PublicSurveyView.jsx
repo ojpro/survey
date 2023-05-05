@@ -32,7 +32,7 @@ const PublicSurveyView = () => {
     event.preventDefault()
 
     // send survey answers
-    Axios.post(`/survey/${survey.id}/answer`, {answers})
+    Axios.post(`/survey/answer/${survey.answer_id}`, {answers})
       .then((response) => {
         setSurveyCompleted(true)
       }).catch((errors) => {

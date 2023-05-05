@@ -20,4 +20,4 @@ Route::post('/login', [AuthController::class, 'login']);
 Route::get('/view/survey/{survey:slug}', [\App\Http\Controllers\SurveyController::class, 'getSurvey']);
 
 // receive surveys' answer
-Route::post('/survey/{survey}/answer', [\App\Http\Controllers\SurveyController::class, 'storeAnswer']);
+Route::post('/survey/answer/{answer}/', [\App\Http\Controllers\SurveyAnswerController::class, 'storeAnswer']);
