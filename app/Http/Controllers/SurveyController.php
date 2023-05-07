@@ -62,7 +62,7 @@ class SurveyController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Survey $survey, Request $request) // TODO: use slug instead of id
+    public function show(Survey $survey, Request $request)
     {
         $user = $request->user();
 
