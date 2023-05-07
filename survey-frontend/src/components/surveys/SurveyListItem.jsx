@@ -17,7 +17,7 @@ export default function SurveyListItem({
           <p>{survey.description}</p>
         </div>
         <div className='flex flex-row justify-between gap-2 items-center card-actions p-4'>
-          <CustomButton link to={`/surveys/${survey.id}`}>
+          <CustomButton link to={`/surveys/${survey.slug}`}>
             <CiEdit className='w-5 h-5'/> Edit
           </CustomButton>
           <div className='flex flex-row flex-nowrap justify-around items-center gap-2'>
