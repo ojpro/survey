@@ -51,7 +51,7 @@ export default function Surveys() {
           }
         )
       // show success message
-      showToast( 'Survey Deleted Successfully')
+      showToast('Survey Deleted Successfully')
     }
   }
   return (
@@ -73,7 +73,7 @@ export default function Surveys() {
                 You don't have any surveys
               </div>
             )}
-            <div className='grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3 justify-around items-center'>
+            <div className='flex flex-row flex-wrap gap-4 justify-around items-center'>
               {surveys.map((survey) => (
                 <SurveyListItem survey={survey} key={survey.id} onDeleteClick={handleSurveyDelete}/>
               ))}
