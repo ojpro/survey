@@ -234,7 +234,7 @@ export default function SurveyView() {
                            onChange={(event) => setSurvey({...survey, status: event.target.checked})}/>
                   </div>
                   <div className='ml-3 text-sm'>
-                    <label htmlFor="" className="font-medium text-gray-700">
+                    <label htmlFor="status" className="font-medium text-gray-700">
                       Active
                     </label>
                     <p className="text-gray-500">
