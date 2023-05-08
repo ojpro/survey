@@ -3,8 +3,9 @@ import {useStateContext} from "../../contexts/ContextProvider.jsx";
 import {v4 as uuid} from 'uuid';
 import CustomButton from "../core/CustomButton.jsx";
 import {FiPlusCircle, FiTrash} from "react-icons/fi";
+import {BiPlus} from "react-icons/bi";
 
-export default function QuestionEditor({index = 0, question, deleteQuestion, questionChange}) {
+export default function QuestionEditor({index = 0, question, deleteQuestion, questionChange, addQuestion}) {
   const [model, setModel] = useState({...question});
   const {questionTypes} = useStateContext();
 
@@ -29,9 +30,15 @@ export default function QuestionEditor({index = 0, question, deleteQuestion, que
     setModel(question)
   }
 
-  const addOption = () => {
-    model.data.options.push({uuid: uuid(), text: ''})
+  const addOption = (index) => {
+    // set index's default value
+    if (!index) {
+      index = model.data.options.length ? model.data.options.length + 1 : 0;
+    }
+    // add question in the next index
+    model.data.options.splice(index, 0, {uuid: uuid(), text: ''})
     setModel({...model})
+    debugger
   }
 
   const onOptionChange = (event, optionId) => {
@@ -74,7 +81,11 @@ export default function QuestionEditor({index = 0, question, deleteQuestion, que
         <h4>
           {index + 1}. {model.question}
         </h4>
-        <div className='flex items-center'>
+        <div className='flex items-center justify-between gap-4'>
+          <CustomButton type='button' circle
+                        handleClick={() => addQuestion(index + 1)}>
+            <BiPlus className='w-4 mr-2'/> Add Question
+          </CustomButton>
           <CustomButton type='button' circle color='red'
                         handleClick={() => deleteQuestion(question)}>
             <FiTrash className='w-5 h-5 mr-2'/> Delete
@@ -139,9 +150,13 @@ export default function QuestionEditor({index = 0, question, deleteQuestion, que
                 {index + 1}.
               </label>
               <input type="text" id={`option-${index}`} name='option' value={option.text || ' '}
-                     onKeyPress={(event) => handleKeyboardPressOnInput(event, index)}
+                     onKeyUp={(event) => handleKeyboardPressOnInput(event, index)}
                      placeholder='Option value' onChange={event => onOptionChange(event, option.uuid)}
                      className='input block border-gray-300 focus:border-blue-500 focus:outline-none focus:ring-blue-500 sm:text-sm w-full'/>
+
+              <CustomButton link circle color={'blue'} handleClick={() => addOption(index + 1)}>
+                <BiPlus className='w-5 h-5'/>
+              </CustomButton>
 
               <CustomButton link circle color={'red'} handleClick={() => deleteOption(option.uuid)}>
                 <FiTrash className='w-5 h-5'/>
