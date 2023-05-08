@@ -7,11 +7,17 @@ import CustomButton from "../core/CustomButton.jsx";
 export default function SurveyQuestions({questions, onQuestionsUpdate}) {
   const [model, setModel] = useState([...questions]);
   // handle adding new question action
-  const addQuestion = () => {
-    // update questions model
-    setModel([...model, {
+  const addQuestion = (index) => {
+    // set index's default value
+    if (!index) {
+      index = model.length ? model.length + 1 : 0;
+    }
+    // add question in the next index
+    model.splice(index, 0, {
       id: uuid(), type: 'text', question: "", description: "", data: {}
-    }])
+    })
+    // update questions model
+    setModel(model)
     // trigger question update for the parent
     onQuestionsUpdate(model);
   }
@@ -66,9 +72,9 @@ export default function SurveyQuestions({questions, onQuestionsUpdate}) {
 
     {model.length ? (model.map((question, index) => (
       <QuestionEditor key={question.id} index={index} question={question} questionChange={questionChange}
-                      deleteQuestion={deleteQuestion}/>
-    ))) : (<div className='text-gray-400 text-center py-4'>
-      You don't have any created questions
-    </div>)}
+                      deleteQuestion={deleteQuestion} addQuestion={(value) => addQuestion(value)}/>))) : (
+      <div className='text-gray-400 text-center py-4'>
+        You don't have any created questions
+      </div>)}
   </>);
 }
