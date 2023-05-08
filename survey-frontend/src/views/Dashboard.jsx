@@ -130,7 +130,7 @@ export default function Dashboard() {
                         <div className="badge badge-sm bg-gray-400 border-gray-400"> hidden</div>)}
                     </td>
                     <th>
-                      <a href={`/surveys/${survey.id}`} className="btn btn-ghost btn-xs">details</a>
+                      <a href={`/surveys/${survey.slug}`} className="btn btn-ghost btn-xs">details</a>
                     </th>
                   </tr>))}
 
