@@ -1,6 +1,5 @@
 import {useEffect, useState} from "react";
 import {useStateContext} from "../../contexts/ContextProvider.jsx";
-import {BiTrash} from "react-icons/bi";
 import {v4 as uuid} from 'uuid';
 import CustomButton from "../core/CustomButton.jsx";
 import {FiPlusCircle, FiTrash} from "react-icons/fi";
@@ -70,12 +69,12 @@ export default function QuestionEditor({index = 0, question, deleteQuestion, que
           </h4>
           <div className='flex items-center'>
             <CustomButton type='button' circle color='red'
-                    handleClick={() => deleteQuestion(question)}>
+                          handleClick={() => deleteQuestion(question)}>
               <FiTrash className='w-5 h-5 mr-2'/> Delete
             </CustomButton>
           </div>
         </div>
-        <div className='flex gap-3 justify-between mb-3'>
+        <div className='flex gap-3 justify-between'>
           {/* Question Text */}
           <div className='flex-1'>
             <label htmlFor="question" className='block text-sm font-medium text-gray-700'>
@@ -106,7 +105,7 @@ export default function QuestionEditor({index = 0, question, deleteQuestion, que
 
 
         {/* Question Description */}
-        <div>
+        <div className='mt-2'>
           <label htmlFor="description" className='block text-sm font-medium text-gray-700'>
             Description
           </label>
